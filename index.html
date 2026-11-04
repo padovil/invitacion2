@@ -16,6 +16,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="theme-color" content="#233A26">
+<meta name="format-detection" content="telephone=no">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -188,6 +189,9 @@ p{margin:0 0 1rem}
 .tarjeta.ultima{margin-top:-3.5rem;margin-bottom:0;padding-bottom:3rem}
 .icono-wa{width:44px;height:44px;margin:1rem auto .4rem;display:block}
 .numero{font-variant-numeric:tabular-nums;letter-spacing:.06em;user-select:all}
+/* Sin azul por defecto: el celular convierte el número en enlace */
+a{color:inherit}
+.tarjeta a:not(.btn),a[href^="tel"],a[x-apple-data-detectors]{color:inherit!important;text-decoration:none!important}
 .cierre .firma{margin-top:1.8rem}
 
 /* Música */
