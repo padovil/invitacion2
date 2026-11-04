@@ -1,8 +1,15 @@
 <!DOCTYPE html>
+<!-- © 2026 Serena Studio · Diseño y código protegidos. Todos los derechos reservados. Ver LICENSE. -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- ========== SEGURIDAD ==========
+     CSP: solo se carga lo que está en este mismo sitio. Sin scripts en línea,
+     sin formularios ni conexiones a terceros. Si agregas un recurso externo,
+     hay que permitirlo aquí. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Boda de Mariana &amp; Sebastián · 12 de junio de 2027 · Chía</title>
 <meta name="description" content="Mariana y Sebastián se casan el sábado 12 de junio de 2027 en Chía, Cundinamarca. Ceremonia a las 4:30 p. m. en la Parroquia Santa Lucía y recepción en la Casa Quinta El Retiro. Confirma tu asistencia aquí.">
 <meta name="author" content="Mariana y Sebastián">
@@ -70,11 +77,16 @@
 
 <!-- Carga rápida de la foto de portada (la primera que se ve) -->
 <link rel="preload" as="image" href="FOTO_PORTADA.jpg" fetchpriority="high">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@400;500&family=Pinyon+Script&display=swap">
+<link rel="preload" href="fuentes/forum-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/jost-400.woff2" as="font" type="font/woff2" crossorigin>
 
 <style>
+/* Fuentes alojadas en el mismo sitio (sin depender de Google) */
+@font-face{font-family:"Forum";src:url(fuentes/forum-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Jost";src:url(fuentes/jost-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Jost";src:url(fuentes/jost-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Pinyon Script";src:url(fuentes/pinyon-script-400.woff2) format("woff2");font-weight:400;font-display:swap}
+
 /* =========================================================
    PLANTILLA "BOSQUE" — arcos y ondas.
    Layout: una columna estrecha tipo celular; fotos a todo el ancho que
@@ -285,7 +297,7 @@ a{color:inherit}
 <!-- ===================== PORTADA ===================== -->
 <header class="portada">
   <div class="foto">
-    <img src="FOTO_PORTADA.jpg" width="848" height="1280" fetchpriority="high" decoding="async" alt="Mariana y Sebastián abrazados en un sendero entre árboles" onerror="this.dataset.falla=1">
+    <img src="FOTO_PORTADA.jpg" width="848" height="1280" fetchpriority="high" decoding="async" alt="Mariana y Sebastián abrazados en un sendero entre árboles">
     <span class="ph" aria-hidden="true" style="padding-bottom:40%"><b>FOTO PORTADA</b>FOTO_PORTADA.jpg · vertical 1080 × 1440</span>
     <div class="save"><span>Save the date</span><b>12/06</b></div>
     <div class="nombres">
@@ -509,11 +521,11 @@ a{color:inherit}
   <p style="font-size:.9rem;margin:.8rem 0 0">Recepción a las 6:30 p. m. en la Casa Quinta El Retiro, Km 2 vía Chía – Cajicá.</p>
 
   <div class="botones">
-    <a class="btn btn-claro" id="btn-maps" target="_blank" rel="noopener">
+    <a class="btn btn-claro" id="btn-maps" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
       Cómo llegar
     </a>
-    <a class="btn btn-claro" id="btn-gcal" target="_blank" rel="noopener">
+    <a class="btn btn-claro" id="btn-gcal" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
       Agendar
     </a>
@@ -524,7 +536,7 @@ a{color:inherit}
 <div class="ondas">
   <svg class="onda arriba" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0 H400 V18 C330 46 270 6 200 22 C130 38 70 8 0 30 Z"/></svg>
   <div class="foto">
-    <img src="FOTO_2.jpg" width="564" height="847" decoding="async" alt="Mariana y Sebastián abrazados, descalzos sobre el pasto" loading="lazy" onerror="this.dataset.falla=1">
+    <img src="FOTO_2.jpg" width="564" height="847" decoding="async" alt="Mariana y Sebastián abrazados, descalzos sobre el pasto" loading="lazy">
     <span class="ph" aria-hidden="true"><b>FOTO 2</b>FOTO_2.jpg · vertical 1080 × 1350</span>
   </div>
   <svg class="onda abajo" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0 H400 V26 C320 4 260 40 190 20 C120 2 60 34 0 16 Z"/></svg>
@@ -572,7 +584,7 @@ a{color:inherit}
   <p id="cupos-txt" hidden style="color:var(--bosque);font-weight:500"></p>
   <p>Por favor confírmanos antes del <strong style="color:var(--tinta);font-weight:500">sábado 22 de mayo</strong> llenando el formulario.</p>
   <div class="botones">
-    <a class="btn" id="btn-form" target="_blank" rel="noopener">Llenar formulario</a>
+    <a class="btn" id="btn-form" target="_blank" rel="noopener noreferrer">Llenar formulario</a>
   </div>
   <p style="font-size:.9rem;margin:1.2rem 0 0">Celebración solo para adultos.</p>
 </section>
@@ -581,7 +593,7 @@ a{color:inherit}
 <div class="arco-foto">
   <svg class="onda arriba" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0 H400 V22 C320 44 250 6 180 24 C110 42 50 10 0 28 Z"/></svg>
   <div class="foto">
-    <img src="FOTO_3.jpg" width="1024" height="1280" decoding="async" alt="Mariana y Sebastián mirándose al atardecer en el campo" loading="lazy" onerror="this.dataset.falla=1">
+    <img src="FOTO_3.jpg" width="1024" height="1280" decoding="async" alt="Mariana y Sebastián mirándose al atardecer en el campo" loading="lazy">
     <span class="ph" aria-hidden="true" style="padding-bottom:30%"><b>FOTO 3</b>FOTO_3.jpg · vertical 1080 × 1350</span>
   </div>
   <div class="cuenta" role="timer" aria-label="Tiempo que falta para la boda">
@@ -602,7 +614,7 @@ a{color:inherit}
   </svg>
   <p class="numero" id="numero-txt">+57 300 000 0000</p>
   <div class="botones" style="margin-top:.4rem">
-    <a class="btn btn-claro" id="btn-wa" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    <a class="btn btn-claro" id="btn-wa" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
   </div>
   <p class="firma">¡Con mucha ilusión te esperamos!</p>
 </section>
@@ -618,99 +630,7 @@ a{color:inherit}
 </button>
 <div class="aviso" id="aviso" role="status" hidden></div>
 
-<script>
-/* =========================================================
-   DATOS DEL EVENTO — editar aquí para cada cliente
-   ========================================================= */
-const EVENTO = {
-  titulo: "Boda de Mariana & Sebastián",
-  inicioISO: "2027-06-12T16:30:00-05:00",   // hora Colombia
-  inicioUTC: "20270612T213000Z",
-  finUTC:    "20270613T070000Z",            // 2:00 a. m.
-  lugar: "Parroquia Santa Lucía, Calle 12 # 10-40, Chía",
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ch%C3%ADa%2C%20Cundinamarca", // [EJEMPLO]
-  formularioUrl: "https://forms.gle/",      // [EJEMPLO] link del formulario de confirmación
-  whatsappOrganizadora: "573000000000",     // [EJEMPLO] con indicativo, sin +
-  novios: "Mariana y Sebastián"
-};
-
-const $ = id => document.getElementById(id);
-function aviso(t){ const a=$("aviso"); a.textContent=t; a.hidden=false; clearTimeout(aviso.t); aviso.t=setTimeout(()=>a.hidden=true,2600); }
-
-/* ---------- Personalización: ...?para=Familia%20López&cupos=2 ---------- */
-(function(){
-  const q = new URLSearchParams(location.search);
-  const para = (q.get("para") || "").trim().slice(0, 60);
-  const cupos = parseInt(q.get("cupos"), 10);
-  if (para) $("para").textContent = (/familia|\sy\s|&|,/i.test(para) ? "Queridos " : "Querido(a) ") + para;
-  if (cupos > 0) {
-    $("cupos-txt").textContent = cupos === 1 ? "Hemos reservado 1 lugar para ti." : "Hemos reservado " + cupos + " lugares para ustedes.";
-    $("cupos-txt").hidden = false;
-  }
-})();
-
-/* ---------- Enlaces ---------- */
-$("btn-maps").href = EVENTO.mapsUrl;
-$("btn-form").href = EVENTO.formularioUrl;
-$("btn-wa").href = "https://wa.me/" + EVENTO.whatsappOrganizadora + "?text=" +
-  encodeURIComponent("Hola Daniela, tengo una pregunta sobre la boda de " + EVENTO.novios + ".");
-$("btn-gcal").href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
-  + "&text=" + encodeURIComponent(EVENTO.titulo)
-  + "&dates=" + EVENTO.inicioUTC + "/" + EVENTO.finUTC
-  + "&location=" + encodeURIComponent(EVENTO.lugar);
-
-/* ---------- Cuenta regresiva en casillas ---------- */
-(function(){
-  const meta = new Date(EVENTO.inicioISO).getTime();
-  const pinta = (id, n, cifras) => {
-    const s = String(n).padStart(cifras, "0").slice(-cifras);
-    [...$(id).children].forEach((b, i) => b.textContent = s[i]);
-  };
-  function tick(){
-    let s = Math.max(0, Math.floor((meta - Date.now()) / 1000));
-    pinta("c-d", Math.min(999, Math.floor(s / 86400)), 3);
-    pinta("c-h", Math.floor(s % 86400 / 3600), 2);
-    pinta("c-m", Math.floor(s % 3600 / 60), 2);
-  }
-  tick(); setInterval(tick, 15000);
-})();
-
-/* ---------- Copiar cuenta ---------- */
-$("btn-copiar").addEventListener("click", () => {
-  const txt = $("num-cuenta").textContent.replace(/\D/g, "");
-  const sel = () => { const r=document.createRange(); r.selectNodeContents($("num-cuenta")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); aviso("Número seleccionado. Cópialo desde el menú."); };
-  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(() => aviso("Cuenta copiada"), sel);
-  else sel();
-});
-
-/* ---------- Música ----------
-   Intenta sonar apenas carga la página. Los navegadores bloquean el sonido
-   automático hasta que el invitado interactúa, así que si lo bloquean,
-   arranca con el primer toque, clic o tecla en cualquier parte. */
-(function(){
-  const au = $("audio"), b = $("btn-musica");
-  au.preload = "auto";
-  const estado = on => { b.setAttribute("aria-pressed", on ? "true" : "false"); b.setAttribute("aria-label", on ? "Pausar música" : "Reproducir música"); };
-  au.addEventListener("play", () => estado(true));
-  au.addEventListener("pause", () => estado(false));
-  let pausadaPorInvitado = false;
-  const intentar = () => au.play().catch(() => {});
-  const primerGesto = e => {
-    if (e.target.closest && e.target.closest("#btn-musica")) return quitar();
-    if (au.paused && !pausadaPorInvitado) intentar();
-    quitar();
-  };
-  const evs = ["pointerdown", "touchstart", "keydown"];
-  const quitar = () => evs.forEach(ev => document.removeEventListener(ev, primerGesto, true));
-  evs.forEach(ev => document.addEventListener(ev, primerGesto, {capture:true, passive:true}));
-  document.addEventListener("DOMContentLoaded", intentar);
-  if (document.readyState !== "loading") intentar();
-  b.addEventListener("click", () => {
-    if (au.paused) { pausadaPorInvitado = false; au.play().catch(() => aviso("Falta el archivo de la canción.")); }
-    else { pausadaPorInvitado = true; au.pause(); }
-  });
-})();
-</script>
+<script src="invitacion.js" defer></script>
 
 </body>
 </html>
