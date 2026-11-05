@@ -70,7 +70,7 @@ $("btn-copiar").addEventListener("click", () => {
    arranca con el primer toque, clic o tecla en cualquier parte. */
 (function(){
   const au = $("audio"), b = $("btn-musica");
-  au.preload = "auto";
+  au.preload = "metadata";  /* la canción se descarga solo al empezar a sonar */
   const estado = on => { b.setAttribute("aria-pressed", on ? "true" : "false"); b.setAttribute("aria-label", on ? "Pausar música" : "Reproducir música"); };
   au.addEventListener("play", () => estado(true));
   au.addEventListener("pause", () => estado(false));
