@@ -15,7 +15,7 @@
 <meta name="author" content="Mariana y Sebastián">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://padovil.github.io/invitacion2/">
-<meta name="theme-color" content="#233A26">
+<meta name="theme-color" content="#F3F2EE">
 <meta name="format-detection" content="telephone=no">
 
 <!-- Ícono de la pestaña y del acceso directo (monograma M&S) -->
@@ -201,6 +201,7 @@ p{margin:0 0 1rem}
   background:var(--bosque);color:var(--papel);border:1px solid var(--bosque);border-radius:0;cursor:pointer;
 }
 .btn svg{width:17px;height:17px;flex:none}
+.btn{transition:background-color .2s, color .2s, border-color .2s}
 .btn:hover{background:var(--bosque-2)}
 .btn-claro{background:transparent;color:var(--papel);border-color:rgba(243,242,238,.7)}
 .btn-claro:hover{background:var(--papel);color:var(--bosque)}
@@ -288,21 +289,43 @@ a{color:inherit}
   .digitos b{width:1.8rem;height:2.3rem;font-size:1.25rem}
   .cuenta{gap:.45rem}
 }
+
+/* ===================== ACCESIBILIDAD Y USO TÁCTIL =====================
+   (revisión con las Web Interface Guidelines de Vercel) */
+html{scroll-padding-bottom:calc(84px + env(safe-area-inset-bottom, 0px));-webkit-tap-highlight-color:rgba(35,58,38,.14)}
+a,button,summary,label,select,input{touch-action:manipulation}
+p{text-wrap:pretty}
+[id]{scroll-margin-top:1rem}
+/* Enlace para saltar a la confirmación: aparece solo al navegar con teclado */
+.saltar{
+  position:absolute;z-index:40;left:max(16px, env(safe-area-inset-left, 0px));top:calc(8px + env(safe-area-inset-top, 0px));
+  padding:.75rem 1.1rem;background:var(--bosque);color:var(--papel);font:600 .85rem/1 var(--f-texto);text-decoration:none;
+  transform:translateY(-200%);
+}
+.saltar:focus-visible{transform:none;outline-color:var(--bosque)}
+/* El anillo de foco se ve también sobre los fondos oscuros */
+.tarjeta :focus-visible{outline-color:var(--papel)}
+.musica{transition:background-color .2s, color .2s}
+.musica:hover{background:var(--bosque-2)}
+.musica:focus-visible{outline-color:var(--bosque);box-shadow:0 0 0 3px var(--papel)}
+fieldset.campo{border:0;margin:0 0 1rem;padding:0;min-width:0}
+fieldset.campo legend{padding:0;margin-bottom:.35rem}
 </style>
 </head>
 <body>
 
+<a class="saltar" href="#confirmar">Ir a confirmar asistencia</a>
 <div class="invitacion">
 
 <!-- ===================== PORTADA ===================== -->
 <header class="portada">
   <div class="foto">
     <img src="FOTO_PORTADA.jpg" width="848" height="1280" fetchpriority="high" decoding="async" alt="Mariana y Sebastián abrazados en un sendero entre árboles">
-    <span class="ph" aria-hidden="true" style="padding-bottom:40%"><b>FOTO PORTADA</b>FOTO_PORTADA.jpg · vertical 1080 × 1440</span>
+    <span class="ph" aria-hidden="true" style="padding-bottom:40%"><b>FOTO PORTADA</b>FOTO_PORTADA.jpg · vertical 1080&nbsp;×&nbsp;1440</span>
     <div class="save"><span>Save the date</span><b>12/06</b></div>
     <div class="nombres">
       <span class="amp" aria-hidden="true">&amp;</span>
-      <h1 aria-label="Mariana y Sebastián"><span>Mariana</span><span>Sebastián</span></h1>
+      <h1 aria-label="Mariana y Sebastián" translate="no"><span>Mariana</span><span>Sebastián</span></h1>
     </div>
     <div class="arco"></div>
   </div>
@@ -315,14 +338,14 @@ a{color:inherit}
   <p id="para" class="firma" style="font-size:1.5rem;margin-bottom:.8rem">Queridos amigos y familia</p>
   <p id="t-invita">Con mucha alegría queremos invitarte a celebrar el día más importante de nuestras vidas: ¡nuestra boda!</p>
 
-  <div class="fecha" aria-label="Sábado 12 de junio de 2027, 4:30 de la tarde">
+  <div class="fecha" role="img" aria-label="Sábado 12 de junio de 2027, 4:30 de la tarde">
     <span>Junio</span>
     <div><b>12</b><small>2027</small></div>
-    <span>4:30 p. m.</span>
+    <span>4:30&nbsp;p.&nbsp;m.</span>
   </div>
 
   <p>Será un honor tenerte entre nuestros invitados.</p>
-  <p class="firma">Mariana y Sebastián</p>
+  <p class="firma" translate="no">Mariana y Sebastián</p>
 
   <p style="margin-top:1.6rem;margin-bottom:.2rem">La ceremonia será en</p>
   <p style="margin:0">Calle 12 # 10-40, Chía, Cundinamarca</p>
@@ -518,7 +541,7 @@ a{color:inherit}
     <path d="M336 192 l1.5 -4 M339 192 l-.5 -3.5 M341 192 l1.5 -3" stroke-width=".5" opacity=".7"/>
   </svg>
   <p class="lugar-nombre">Parroquia Santa Lucía</p>
-  <p style="font-size:.9rem;margin:.8rem 0 0">Recepción a las 6:30 p. m. en la Casa Quinta El Retiro, Km 2 vía Chía – Cajicá.</p>
+  <p style="font-size:.9rem;margin:.8rem 0 0">Recepción a las 6:30&nbsp;p.&nbsp;m. en la Casa Quinta El Retiro, Km 2 vía Chía – Cajicá.</p>
 
   <div class="botones">
     <a class="btn btn-claro" id="btn-maps" target="_blank" rel="noopener noreferrer">
@@ -537,7 +560,7 @@ a{color:inherit}
   <svg class="onda arriba" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0 H400 V18 C330 46 270 6 200 22 C130 38 70 8 0 30 Z"/></svg>
   <div class="foto">
     <img src="FOTO_2.jpg" width="564" height="847" decoding="async" alt="Mariana y Sebastián abrazados, descalzos sobre el pasto" loading="lazy">
-    <span class="ph" aria-hidden="true"><b>FOTO 2</b>FOTO_2.jpg · vertical 1080 × 1350</span>
+    <span class="ph" aria-hidden="true"><b>FOTO 2</b>FOTO_2.jpg · vertical 1080&nbsp;×&nbsp;1350</span>
   </div>
   <svg class="onda abajo" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0 H400 V26 C320 4 260 40 190 20 C120 2 60 34 0 16 Z"/></svg>
 </div>
@@ -548,11 +571,11 @@ a{color:inherit}
   <p class="sub">Formal</p>
   <p>Nos encantaría que nos acompañes con la paleta de nuestra boda.</p>
   <p class="etq">Ellas: vestido largo o de coctel</p>
-  <div class="colores" aria-label="Palo de rosa, champaña, salvia y negro">
+  <div class="colores" role="img" aria-label="Palo de rosa, champaña, salvia y negro">
     <i style="background:#D9B8B4"></i><i style="background:#EADCC4"></i><i style="background:#9DAA93"></i><i style="background:#1E1E1E"></i>
   </div>
   <p class="etq">Ellos: traje formal</p>
-  <div class="colores" aria-label="Negro, gris oxford, verde bosque y azul noche" style="margin-bottom:.6rem">
+  <div class="colores" role="img" aria-label="Negro, gris oxford, verde bosque y azul noche" style="margin-bottom:.6rem">
     <i style="background:#1E1E1E"></i><i style="background:#62666A"></i><i style="background:#2F4632"></i><i style="background:#1F3352"></i>
   </div>
   <p style="font-size:.9rem;margin:0">El blanco y el marfil son solo para la novia.</p>
@@ -594,7 +617,7 @@ a{color:inherit}
   <svg class="onda arriba" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0 H400 V22 C320 44 250 6 180 24 C110 42 50 10 0 28 Z"/></svg>
   <div class="foto">
     <img src="FOTO_3.jpg" width="1024" height="1280" decoding="async" alt="Mariana y Sebastián mirándose al atardecer en el campo" loading="lazy">
-    <span class="ph" aria-hidden="true" style="padding-bottom:30%"><b>FOTO 3</b>FOTO_3.jpg · vertical 1080 × 1350</span>
+    <span class="ph" aria-hidden="true" style="padding-bottom:30%"><b>FOTO 3</b>FOTO_3.jpg · vertical 1080&nbsp;×&nbsp;1350</span>
   </div>
   <div class="cuenta" role="timer" aria-label="Tiempo que falta para la boda">
     <div><div class="digitos" id="c-d"><b>0</b><b>0</b><b>0</b></div><small>Días</small></div>
